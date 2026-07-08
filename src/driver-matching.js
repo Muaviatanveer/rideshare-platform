@@ -1,7 +1,29 @@
-// Driver matching logic
-const findDriver = (request) => {
-  // Logic to match driver based on request details
-  return { id: 'driver123', name: 'John Doe' };
+---
+const validateInput = (input) => {
+  if (typeof input !== 'string' || input.trim() === '') {
+    throw new Error('Invalid input. Input must be a non-empty string.');
+  }
 };
 
-module.exports = { findDriver };
+const sanitizeInput = (input) => {
+  return input.trim();
+};
+
+const matchDriver = (driverID, driverName) => {
+  try {
+    validateInput(driverID);
+    validateInput(driverName);
+
+    const sanitizedDriverID = sanitizeInput(driverID);
+    const sanitizedDriverName = sanitizeInput(driverName);
+
+    // Simulate matching logic
+    console.log(`Matching driver with ID: ${sanitizedDriverID} and Name: ${sanitizedDriverName}`);
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+// Example usage:
+matchDriver('12345', 'John Doe');
+---
